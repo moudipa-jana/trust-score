@@ -148,3 +148,12 @@ def process_post_batch(req: ProcessPostBatchRequest):
         results.append({"post_id": p.post_id, "score": new_score})
         
     return {"status": "success", "processed": len(results), "scores": results}
+
+@router.get("/trust-score/{user_id}")
+def get_user_trust_score(user_id: str, category: str = "Global"):
+    current_score = get_current_trust_score(user_id, category)
+    return {
+        "user_id": user_id,
+        "trust_score": current_score,
+        "trust_label": get_trust_label(current_score)
+    }

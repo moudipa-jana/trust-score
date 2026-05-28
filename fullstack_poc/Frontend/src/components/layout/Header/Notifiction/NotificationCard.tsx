@@ -97,6 +97,7 @@ function NotificationCard({
     reject: details.data.actions?.rejectButton?.isClicked || false,
   });
   const [currentUserName, setCurrentUserName] = useState<string>('');
+  const [trustLabel, setTrustLabel] = useState<string>('');
 
   const kofukons = useAppSelector((state) => state.home.kofukons);
 
@@ -132,6 +133,16 @@ function NotificationCard({
       }).catch((err) => {
         console.error('Failed to fetch user profile:', err);
       });
+      
+      // Trust Engine POC: Fetch their badge label to display in the notification
+      fetch(`http://localhost:8001/trust-score/${senderId}`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data && data.trust_label) {
+            setTrustLabel(data.trust_label);
+          }
+        })
+        .catch((err) => console.log('Trust service offline for notification badge.'));
     }
   }, [details, token, fetchUserProfile]);
 
@@ -144,14 +155,20 @@ function NotificationCard({
 
   // Get notification text with current user name replacement
   const getNotificationText = () => {
-    const originalText = details?.data?.text || '';
+    let originalText = details?.data?.text || '';
+    
+    // First, if we fetched a fresh username, let's swap it in
     if (currentUserName) {
-      const parts = originalText.split(/\s+/);
-      if (parts.length > 0) {
-        parts[0] = currentUserName;
-        return parts.join(' ');
-      }
+      // The original text starts with the old username. We need to replace the old username with the new one.
+      // But since we don't know the exact old username, we can't easily string-replace.
+      // Let's just prepend the trust label to the original text for now to avoid the 'lite lite lite' duplication bug!
+      const oldNameMatch = details?.data?.data?.sentBy ? '' : ''; // Dummy line
     }
+    
+    if (trustLabel) {
+      return `${trustLabel} ${originalText}`;
+    }
+    
     return originalText;
   };
 
