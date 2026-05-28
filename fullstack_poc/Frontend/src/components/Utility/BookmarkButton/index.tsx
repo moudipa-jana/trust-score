@@ -36,6 +36,7 @@ interface BookmarkProps {
   isCamfireMember?: boolean | null;
   setCampfireJoin?: (join: boolean) => void;
   footerDisable?: boolean;
+  categoryName?: string;
 }
 
 type BookmarkVariable = {
@@ -52,6 +53,7 @@ export default function BookmarkButton({
   isCamfireMember,
   setCampfireJoin,
   footerDisable,
+  categoryName,
 }: BookmarkProps) {
   function handlePostType() {
     let type = '';
@@ -94,6 +96,27 @@ export default function BookmarkButton({
       } else {
         emitNotification('success', 'Post bookmarked successfully');
       }
+      
+      // Notify Trust Service of the UI interaction
+      if (postUserId && categoryName && profile?.id && cardType !== CardTypeEnum.comment) {
+        fetch('http://localhost:8001/process-reaction', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            event_id: `bookmark_${postId}_${Date.now()}`,
+            author_id: postUserId,
+            voter_id: profile.id,
+            voter_tier: 'New Voice', // Default
+            category: categoryName,
+            entity_type: 'post',
+            post_text: '',
+            comment_text: '',
+            reaction_text: 'bookmark',
+            signal: 'BOOKMARK',
+            timestamp: new Date().toISOString()
+          })
+        }).catch(err => console.error('Trust service bookmark failed', err));
+      }
     },
     onError: (err) => emitErrorNotification(formatGraphqlError(err)),
   });
@@ -114,6 +137,27 @@ export default function BookmarkButton({
         emitNotification('success', 'Reply unbookmarked successfully');
       } else {
         emitNotification('success', 'Post unbookmarked successfully');
+      }
+      
+      // Notify Trust Service of the UI interaction (Unbookmark)
+      if (postUserId && categoryName && profile?.id && cardType !== CardTypeEnum.comment) {
+        fetch('http://localhost:8001/process-reaction', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            event_id: `unbookmark_${postId}_${Date.now()}`,
+            author_id: postUserId,
+            voter_id: profile.id,
+            voter_tier: 'New Voice', // Default
+            category: categoryName,
+            entity_type: 'post',
+            post_text: '',
+            comment_text: '',
+            reaction_text: 'unbookmark',
+            signal: 'UNBOOKMARK',
+            timestamp: new Date().toISOString()
+          })
+        }).catch(err => console.error('Trust service unbookmark failed', err));
       }
     },
     onError: (err) => emitErrorNotification(formatGraphqlError(err)),

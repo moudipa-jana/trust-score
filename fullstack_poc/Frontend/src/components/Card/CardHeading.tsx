@@ -192,8 +192,14 @@ function CardHeading({
               font="xl:text-lg text-base font-normal sm:text-xs"
               color="text-black-200"
             >
-              <LinkifyText className="line-clamp-2" text={firstPart} />
-              {secondPart && <LinkifyText text={secondPart} />}
+              {typeof title === 'string' ? (
+                <>
+                  <LinkifyText className="line-clamp-2" text={firstPart} />
+                  {secondPart && <LinkifyText text={secondPart} />}
+                </>
+              ) : (
+                <>{title}</>
+              )}
               {message && <LinkifyText text={message} />}
             </Heading>
           ) : (

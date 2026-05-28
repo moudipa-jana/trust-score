@@ -39,6 +39,7 @@ def process_reaction(req: ProcessReactionRequest):
         voter_id=req.voter_id,
         voter_tier=req.voter_tier,
         reaction_text=req.reaction_text,
+        signal=req.signal,
         timestamp=req.timestamp
     )
     
@@ -117,12 +118,17 @@ def process_post_batch(req: ProcessPostBatchRequest):
         
         current_score = get_current_trust_score(p.author_id, p.category)
         
-        if current_score == 50.0:
-             contribution = relevancy * 10.0
-             new_score = 50.0 + contribution
+        if relevancy < 0.45:
+             # Small decimal penalty for irrelevant content (e.g., -0.2 to -2.0)
+             contribution = -5.0 * (0.45 - relevancy)
         else:
-             contribution = relevancy * 5.0
-             new_score = current_score + contribution
+             if current_score == 50.0:
+                  # First time boost for good content
+                  contribution = relevancy * 10.0
+             else:
+                  contribution = relevancy * 5.0
+                  
+        new_score = current_score + contribution
              
         new_score = max(0.0, min(100.0, new_score))
         

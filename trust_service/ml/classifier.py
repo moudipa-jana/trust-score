@@ -4,7 +4,7 @@ class ClassifierEngine:
     def __init__(self):
         # We load this once on startup
         self.classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
-        self.labels = ["Helpful", "Empathetic", "Clear", "Would Listen Again", "Confusing", "Dismissive", "Reported", "Neutral"]
+        self.labels = ["Helpful", "Empathetic", "Clear", "Would Listen Again", "Confusing", "Dismissive", "Neutral"]
 
     def classify(self, text: str):
         # multi_label=True allows independent probabilities for each label

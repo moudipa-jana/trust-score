@@ -180,6 +180,7 @@ export default function ForumCardFooter({
     participantsCount || 0,
   );
   const token = getUserToken();
+  const profile = useAppSelector((state) => state.auth.profile);
   const router = useRouter();
   const firstScrollRef = useRef(true);
   const { pathname } = router;
@@ -250,6 +251,27 @@ export default function ForumCardFooter({
             },
           }),
         );
+      }
+      
+      // Notify Trust Service of the UI interaction (Share)
+      if (user?.id && categoryName && profile?.id && postType !== PostTypeEnum.comment) {
+        fetch('http://localhost:8001/process-reaction', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            event_id: `share_${postId}_${Date.now()}`,
+            author_id: user.id,
+            voter_id: profile.id,
+            voter_tier: 'New Voice', // Default
+            category: categoryName,
+            entity_type: 'post',
+            post_text: '',
+            comment_text: '',
+            reaction_text: 'share',
+            signal: 'SHARE',
+            timestamp: new Date().toISOString()
+          })
+        }).catch(err => console.error('Trust service share failed', err));
       }
     }
   }
@@ -598,6 +620,7 @@ export default function ForumCardFooter({
                   postUserId={user?.id}
                   commentId={commentId}
                   cardType={cardType}
+                  categoryName={categoryName}
                   footerDisable={footerDisable}
                   parentCommentId={parentCommentId}
                   isCamfireMember={isCamfireMember}

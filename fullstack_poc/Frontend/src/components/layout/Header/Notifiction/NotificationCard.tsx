@@ -97,7 +97,7 @@ function NotificationCard({
     reject: details.data.actions?.rejectButton?.isClicked || false,
   });
   const [currentUserName, setCurrentUserName] = useState<string>('');
-  const [trustLabel, setTrustLabel] = useState<string>('');
+  const [trustScore, setTrustScore] = useState<number | null>(null);
 
   const kofukons = useAppSelector((state) => state.home.kofukons);
 
@@ -138,13 +138,61 @@ function NotificationCard({
       fetch(`http://localhost:8001/trust-score/${senderId}`)
         .then((res) => res.json())
         .then((data) => {
-          if (data && data.trust_label) {
-            setTrustLabel(data.trust_label);
+          if (data && data.trust_score) {
+            setTrustScore(data.trust_score);
           }
         })
         .catch((err) => console.log('Trust service offline for notification badge.'));
     }
   }, [details, token, fetchUserProfile]);
+
+  const getTrustBadge = (score: number | null | undefined) => {
+    if (score === null || score === undefined) return null;
+    
+    // Base styles for the badge
+    const baseStyle = "inline-flex items-center px-2 py-0.5 text-[10px] sm:text-xs font-bold rounded-full shadow-sm whitespace-nowrap transition-all duration-300";
+    
+    if (score >= 85.0) {
+      return (
+        <span className={`${baseStyle} bg-gradient-to-r from-amber-200 via-yellow-300 to-amber-200 text-yellow-900 border border-yellow-400/50 shadow-[0_0_8px_rgba(251,191,36,0.4)]`}>
+          <span className="mr-1">🌟</span> Legendary Voice
+        </span>
+      );
+    }
+    if (score >= 65.0) {
+      return (
+        <span className={`${baseStyle} bg-gradient-to-r from-emerald-100 to-emerald-200 text-emerald-800 border border-emerald-300`}>
+          <span className="mr-1">✓</span> Trusted
+        </span>
+      );
+    }
+    if (score >= 55.0) {
+      return (
+        <span className={`${baseStyle} bg-gradient-to-r from-blue-50 to-sky-100 text-blue-700 border border-blue-200`}>
+          Positive
+        </span>
+      );
+    }
+    if (score >= 35.0) {
+      return (
+        <span className={`${baseStyle} bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 border border-gray-300`}>
+          New Voice
+        </span>
+      );
+    }
+    if (score >= 20.0) {
+      return (
+        <span className={`${baseStyle} bg-red-50 text-red-700 border border-red-200`}>
+          ⚠️ Warning
+        </span>
+      );
+    }
+    return (
+      <span className={`${baseStyle} bg-red-100 text-red-900 border border-red-300 shadow-[0_0_8px_rgba(239,68,68,0.4)]`}>
+        🚫 Toxic
+      </span>
+    );
+  };
 
   // Update current username state when user data arrives
   useEffect(() => {
@@ -157,19 +205,45 @@ function NotificationCard({
   const getNotificationText = () => {
     let originalText = details?.data?.text || '';
     
-    // First, if we fetched a fresh username, let's swap it in
-    if (currentUserName) {
-      // The original text starts with the old username. We need to replace the old username with the new one.
-      // But since we don't know the exact old username, we can't easily string-replace.
-      // Let's just prepend the trust label to the original text for now to avoid the 'lite lite lite' duplication bug!
-      const oldNameMatch = details?.data?.data?.sentBy ? '' : ''; // Dummy line
-    }
-    
-    if (trustLabel) {
-      return `${trustLabel} ${originalText}`;
-    }
-    
+    // Fallback: If we have the current user name, we could try string replacement here,
+    // but the safest approach is to just use the original string.
     return originalText;
+  };
+
+  const BadgeWrapper = ({ children }: { children: React.ReactNode }) => {
+    if (trustScore !== null) {
+      return (
+        <span className="inline">
+          <span className="mr-1.5 inline-block align-middle pb-[2px]">
+            {getTrustBadge(trustScore)}
+          </span>
+          <span className="inline align-middle">{children}</span>
+        </span>
+      );
+    }
+    return <>{children}</>;
+  };
+
+  const ColorizeName = ({ text }: { text: string }) => {
+    if (!currentUserName || !text) return <>{text}</>;
+    
+    const parts = text.split(currentUserName);
+    if (parts.length > 1) {
+      return (
+        <>
+          {parts.map((part, index) => (
+            <React.Fragment key={index}>
+              <LinkifyText text={part} />
+              {index < parts.length - 1 && (
+                <span style={{ color: '#00b2ed', fontWeight: 600 }}>{currentUserName}</span>
+              )}
+            </React.Fragment>
+          ))}
+        </>
+      );
+    }
+    
+    return <LinkifyText text={text} />;
   };
 
   // Lazily fetches campfire members based on campfire ID and dispatches success action.
@@ -318,10 +392,16 @@ function NotificationCard({
     ) {
       const arr = updatedText.split(kofukons[foundIndex]?.attributes?.k_id);
       return (
-        <div style={{ fontSize: isMobile || isIpad ? '12px' : '20px' }}>
-          <span className={` ${isMobile ? 'mr-1' : ''}`}> {arr[0] + ' '}</span>
+        <span className="inline" style={{ fontSize: isMobile || isIpad ? '12px' : '20px' }}>
+          <span className="inline"><ColorizeName text={arr[0] + ' '} /></span>
 
-          <span className="absolute ml-1 inline-flex items-baseline">
+          <span 
+            className="mx-1 inline-block align-middle relative top-[-1px]" 
+            style={{ 
+              width: isMobile || isIpad ? 16 : 25, 
+              height: isMobile || isIpad ? 16 : 25 
+            }}
+          >
             <CustomImage
               style={{
                 height: isIpad || isMobile ? 16 : 25,
@@ -336,13 +416,13 @@ function NotificationCard({
               alt={kofukons[foundIndex]?.attributes?.title}
             />
           </span>
-          <span className={` ${isMobile ? 'ml-5' : 'ml-7'}`}>
-            <LinkifyText text={arr[1]} />
+          <span className="inline">
+            <ColorizeName text={arr[1]} />
           </span>
-        </div>
+        </span>
       );
     }
-    return <div>{updatedText}</div>;
+    return <span className="inline"><ColorizeName text={updatedText} /></span>;
   };
 
   // Toggles the visibility of the notification options menu.
@@ -430,7 +510,7 @@ function NotificationCard({
             type="user"
             profileImg={details.data.profilePicture || 'images/userImage.svg'}
             variant="sm"
-            title={getNotificationText()}
+            title={<BadgeWrapper><ColorizeName text={getNotificationText()} /></BadgeWrapper>}
             details={appDayjs(details.createdAt).fromNow()}
             detailsColor="text-gray-200"
             notificationSeen={details?.isSeen}
@@ -457,7 +537,7 @@ function NotificationCard({
             />
             <div className="w-full">
               <div className="flex flex-row items-center justify-between">
-                {replaceIdWithReaction()}
+                <BadgeWrapper>{replaceIdWithReaction()}</BadgeWrapper>
                 <div>
                   <div
                     className="relative ml-auto h-5 w-5 px-2"
@@ -526,7 +606,7 @@ function NotificationCard({
           type="user"
           profileImg={details.data.profilePicture || 'images/userImage.svg'}
           variant="sm"
-          title={getNotificationText()}
+          title={<BadgeWrapper><ColorizeName text={getNotificationText()} /></BadgeWrapper>}
           notificationSeen={details?.isSeen}
           notificationMuted={!!details?.isMuted}
           handleDeleteNotification={handleDeleteNotification}
@@ -537,9 +617,9 @@ function NotificationCard({
             <div className="replyComment my-4 flex gap-2">
               {details.data.data && (
                 <Text
-                  color="text-blue"
+                  color="text-[#00b2ed]"
                   size="base"
-                  customClass="overflow-y-auto max-h-28"
+                  customClass="overflow-y-auto max-h-28 font-normal"
                 >
                   <LinkifyText text={details.data.data.description ?? ''} />
                 </Text>
@@ -559,7 +639,7 @@ function NotificationCard({
           type="user"
           profileImg={details.data.profilePicture || 'images/userImage.svg'}
           variant="sm"
-          title={getNotificationText()}
+          title={<BadgeWrapper><ColorizeName text={getNotificationText()} /></BadgeWrapper>}
           message={details?.data?.message}
           notificationSeen={details?.isSeen}
           notificationMuted={!!details?.isMuted}
@@ -628,7 +708,7 @@ function NotificationCard({
           type="user"
           profileImg={details.data.profilePicture || 'images/userImage.svg'}
           variant="sm"
-          title={getNotificationText()}
+          title={<BadgeWrapper><ColorizeName text={getNotificationText()} /></BadgeWrapper>}
           details={appDayjs(details.createdAt).fromNow()}
           detailsColor="text-gray-200"
           notificationSeen={details?.isSeen}

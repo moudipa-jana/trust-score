@@ -7,7 +7,8 @@ SIGNAL_WEIGHTS = {
     "DISMISSIVE": -0.3,
     "REPORTED": -1.0,
     "NEUTRAL": 0,
-    "BOOKMARK": 0.3,
-    "SHARE": 0.4,
+    "BOOKMARK": 0.1,
+    "UNBOOKMARK": -0.1,
+    "SHARE": 0.2,
     "ADMIN_REMOVED": -5.0
 }

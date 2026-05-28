@@ -51,7 +51,8 @@ class ProcessReactionRequest(BaseModel):
     voter_tier: str
     category: str
     entity_type: str # 'post' or 'comment'
-    post_text: str
-    comment_text: Optional[str] = None
-    reaction_text: str
+    post_text: str = ""
+    comment_text: str = ""
+    reaction_text: str = ""
+    signal: str = ""
     timestamp: datetime

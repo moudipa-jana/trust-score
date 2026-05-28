@@ -1,0 +1,3 @@
+table:
+  name: trust_scores
+  schema: public
