@@ -1,0 +1,18 @@
+.profile {
+  @apply max-h-[80vh] min-h-[100px] min-w-[372px] overflow-y-auto rounded border border-white-800 bg-white p-4;
+}
+@media (max-width: 767px) {
+  .settingsLeft {
+    @apply max-w-[58%] break-words;
+  }
+  .membersList {
+    @apply -left-[50px] top-20 lg:-left-0 lg:top-0 ;
+  }
+  .membersListEdit {
+    @apply -left-[50px] top-28 lg:-left-0 lg:top-0 ;
+  }
+}
+
+.card-distance{
+  @apply py-2 lg:py-0;
+}

@@ -1,0 +1,47 @@
+
+.dropdown-input{
+  @apply p-2.5 
+}
+
+
+.dropdown-menu{
+  @apply absolute w-full overflow-auto max-h-[393px] bg-white;
+}
+
+
+.dropdown-item {
+  @apply p-2.5 cursor-pointer flex
+}
+
+.dropdown-item:hover {
+  @apply bg-[#9fc3f870]
+}
+
+
+.dropdown-tags {
+  @apply flex flex-wrap gap-1.5
+}
+
+.dropdown-tag-item {
+  @apply bg-white py-0.5 px-1 border-[2px] flex items-center;
+}
+
+.dropdown-tag-close {
+  @apply flex items-center
+}
+
+.search-box {
+  @apply p-1.5 bg-white
+}
+
+.search-box input {
+  @apply w-full p-1.5
+}
+
+
+.labelSpec {
+  @apply mr-2 ;
+  + span {
+    @apply text-black-200;
+  }
+}

@@ -1,0 +1,63 @@
+.forumContainer .leftContent {
+    @apply bg-skyBlue-100 p-10 rounded-xl mb-10
+}
+
+.aboutBox {
+    @apply p-10 mb-10 bg-skyBlue-200 text-white rounded-xl
+}
+
+.postContent {
+    @apply p-5 rounded-lg bg-white
+}
+
+.logoAlias {
+    @apply absolute w-[190px] h-[55px] top-[34px] right-[456px] hidden;
+}
+.socialSphere {
+    @apply animate-fadeIn-Slow opacity-0;
+    animation-delay: 5s;
+}
+
+.categoryDetails .progessbar {
+    @apply hidden;
+}
+
+.nameDuration {
+    h5 .inline-block {
+        @apply text-xs lg:text-base xl:text-md max-w-22.5 lg:max-w-none;
+    }
+}
+
+.overlay {
+    @apply relative;
+
+    &:after {
+        content: '';
+        @apply absolute left-0 right-0 top-0 bottom-0 bg-transparent;
+    }
+}
+
+.followBtnStyle .btnClass {
+    @apply py-1 xl:py-0 xl:px-2 flex items-center rounded-lg;
+    height:30px;    line-height: 16px;
+    
+
+
+    div {
+        @apply text-xs xl:text-base;
+    }
+}
+
+.dialogBtns {
+    button {
+        @apply whitespace-nowrap;
+    }
+}
+
+.iconUpHolder {
+    @apply mb-[2px];
+}
+
+.iconUpCenter {
+    @apply -mt-[2px];
+}

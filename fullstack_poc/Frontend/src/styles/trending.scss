@@ -1,0 +1,244 @@
+
+.boxArrow {
+  @apply absolute bg-[url('/images/trending/boxArrow.svg')] bg-no-repeat bg-contain;
+}
+.hillPages .numberRotate {
+  @apply -bottom-[1.44rem];
+}
+.page1 .numberRotate {
+  @apply -bottom-[2rem];
+}
+.hillPages {
+  @apply fixed left-0 xl:left-[100px] bottom-0 h-[100lvh] xl:h-full w-full;
+  transition: opacity 1s, transform 0.5s;
+}
+.hillPages.hiddenHills {
+  opacity: 0;
+  pointer-events: none;
+}
+@for $i from 1 through 10 {
+  .page#{$i} {
+    z-index: 41 - $i;
+  }
+}
+.page1 {
+  perspective: 100px;
+}
+.page2 {
+  perspective: 280px;
+}
+.page3 {
+  perspective: 300px;
+}
+.page4 {
+  perspective: 340px;
+}
+.page5 {
+  perspective: 420px;
+}
+.page6 {
+  perspective: 500px;
+}
+.page7 {
+  perspective: 550px;
+}
+.page8 {
+  perspective: 580px;
+}
+.page9 {
+  perspective: 590px;
+}
+.page10 {
+  perspective: 620px;
+}
+.hills {
+  transition: transform 0.2s ease-out; 
+}
+.hills {
+  .boxArrow {
+    @apply  h-5 w-5 left-[38%] -bottom-7 ;
+  }
+  .trendingBox {
+    @apply mb-8  w-50 ;
+  }
+  .trendingImg {
+    @apply min-w-8 w-8 h-8;
+  }
+ 
+  .trendingNumber {
+    @apply text-4xl leading-minimum;
+  }
+  .trendingTitle, .trendingTag, .trendingViews  {
+    @apply text-xxxs;
+  }
+}
+
+.hillPages {
+  .hills {
+    &:first-child {
+      @apply w-[130%] xlg:portrait:w-[130%] xlg:w-[48%];
+    }
+  }
+ 
+  &.element1 {
+    .boxArrow {
+      @apply h-10 w-10 -bottom-12 left-41;
+    }
+    .trendingBox {
+      @apply mb-13 lg:w-124 ;
+    }
+    .trendingDetails {
+      @apply gap-4;
+    }
+    .trendingImg {
+      @apply min-w-28 w-28 h-24;
+    }
+    .trendingNumber {
+      @apply text-8xl leading-5;
+    }
+    .trendingTitle {
+      @apply text-lg font-bold;
+    }
+  }
+  &.element2 {
+    .boxArrow {
+      @apply h-5 w-5 left-44 -bottom-7;
+    }
+    .trendingBox {
+      @apply mb-8  w-85;
+    }
+    .trendingDetails {
+      @apply gap-4;
+    }
+    .trendingImg {
+      @apply min-w-19 w-19 h-16;
+    }
+    .trendingNumber {
+      @apply text-7xl leading-minimum;
+    }
+    .trendingTitle {
+      @apply text-base font-bold;
+    }
+    .trendingTag, .trendingViews {
+      @apply text-xxxs;
+    }
+    .numberRotate {
+      @apply -bottom-6;
+    }
+  }
+  &.element3 {
+    .boxArrow {
+      @apply h-3 w-3 left-39.5 -bottom-3;
+    }
+    .trendingBox {
+      @apply mb-4 w-50;
+    }
+    .trendingImg {
+      @apply  w-10 h-10 min-w-10;
+    }
+    .numberRotate {
+      @apply opacity-0;
+    }
+    .trendingNumber {
+      @apply text-5xl leading-minimum;
+    }
+    .trendingTag, .trendingViews  {
+      @apply text-xxxs;
+    }
+    .trendingTitle {
+      @apply text-xxs;
+    }
+  }
+  
+}
+
+.hillType1 {
+  @apply -left-56 xlg:portrait:-left-[20rem] xlg:left-[6%];
+}
+.hillType2 {
+  @apply  -right-[15rem] xlg:portrait:-right-[22rem] xlg:right-[6%] ;
+}
+.hillType3 {
+ @apply  -left-[20%] xlg:portrait:-left-[20%] xlg:left-[16%];
+}
+.hillType4 {
+  @apply  -right-[26%] xlg:portrait:-right-[26%] xlg:right-[16%];
+}
+.hillType5 {
+  @apply -left-[16%] xlg:portrait:-left-[16%] xlg:left-[18%] ;
+}
+.hillType6 {
+  @apply -right-[18%] xlg:portrait:-right-[18%] xlg:right-[18%] ;
+}
+.hills.hillType7 {
+  @apply xlg:portrait:w-[130%] xlg:w-51  -left-[10%] xlg:portrait:-left-[10%] xlg:left-[20%] ;
+}
+.hills.hillType8 {
+  @apply xlg:portrait:w-[130%] xlg:w-49 -right-[14%] xlg:portrait:-right-[14%] xlg:right-[20%] ;
+}
+.hills.hillType9 {
+  @apply xlg:portrait:w-[130%] xlg:w-47 -left-[6%] xlg:portrait:-left-[6%] xlg:left-[22%] ;
+}
+.hills.hillType10 {
+  @apply xlg:portrait:w-[130%] xlg:w-45 -right-[12.6%] xlg:portrait:-right-[12.6%] xlg:right-[22%] ;
+}
+
+.trendingTag, .trendingViews {
+  @apply text-xs;
+}
+.numberRotate {
+  @apply overflow-hidden absolute h-5 -bottom-8 left-55 hidden xl:block;
+  span {
+    @apply text-sm opacity-5;
+  }
+}
+.trendingNumber {
+  @apply -left-4;
+  bottom: calc(100% + 10px);
+}
+.trendingBox {
+  @apply relative;
+  .trendingDetails {
+    @apply rounded-lg border border-primary p-5 lg:p-2  bg-[url('/images/trending/boxBg.svg')] bg-no-repeat bg-cover;
+  }
+  &:hover {
+    .trendingDetails {
+      @apply transition transition-all duration-1000 xlg:scale-110;
+    }
+    .numberRotate span{
+        @apply inline-block relative top-0 left-0 whitespace-nowrap animate-numberCounting px-2;
+    }
+    .trendingNumber {
+      text-shadow: 5px 2px #00B2ED;
+    }
+  }
+}
+@keyframes move {
+0%  { top: 0px; }
+20% { top: -20px; }
+40% { top: -45px; }
+60% { top: -65px; }
+100% { top: -80px;  @apply bg-white opacity-70;}
+}
+.whiteGradient {
+  @apply bg-[url('/images/trending/cloud.png')] bg-no-repeat bg-cover overflow-hidden after:absolute after:bottom-0 after:left-0 after:h-12 after:w-full after:bg-white after:content-[''] after:blur-md;
+  &:before {
+    @apply absolute top-0 left-0 h-full w-full content-[''] blur-md;
+    background: linear-gradient(to top, white, transparent);
+  }
+}
+.trendingImg {
+  @apply w-24 min-w-25 h-20;
+  img {
+    @apply rounded-lg object-cover;
+  }
+}
+.mobileTrending {
+  .trendingBox {
+    @apply mb-8;
+  }
+  @apply before:content-[''] before:absolute before:left-0 before:top-0 before:h-92 before:w-0.5 before:bg-black-850 before:z-20;
+  .trendingNumber {
+    @apply h-8 w-8 rounded-full bg-primary text-white flex items-center justify-center -top-2 ;
+  }
+}

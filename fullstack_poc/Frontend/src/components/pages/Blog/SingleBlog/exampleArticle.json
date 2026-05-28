@@ -1,0 +1,19 @@
+{
+  "id": 1,
+  "heading": "Covid - 19",
+  "image": "/images/blog/covid.svg",
+  "descriptionList": [
+    {
+      "id": 1,
+      "text": "The virus that causes chickenpox also causes shingles. The varicella zoster virus remains in your body in a dormant state. As you get older, it could reactivate again, leading to infections like shingles."
+    },
+    {
+      "id": 2,
+      "text": "Secondly, The virus that causes chickenpox also causes shingles. The varicella zoster virus remains in your body in a dormant state. As you get older, it could reactivate again, leading to infections like shingles."
+    },
+    {
+      "id": 3,
+      "text": "Thirdly, The virus that causes chickenpox also causes shingles. The varicella zoster virus remains in your body in a dormant state. As you get older, it could reactivate again, leading to infections like shingles."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "name": "Followers",
+    "numberOf": "5"
+  },
+  {
+    "id": 2,
+    "name": "Following",
+    "numberOf": "50"
+  }
+]

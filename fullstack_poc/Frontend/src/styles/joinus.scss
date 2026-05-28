@@ -1,0 +1,36 @@
+.job{
+  @apply p-2 text-2xl text-white rounded-full
+}
+.job-details{
+  @apply relative items-center justify-between pb-4 lg:flex;
+  
+}
+.job-req{
+  @apply flex flex-wrap items-center gap-8 pb-4;
+}
+.sub-job-heading{
+  @apply text-sm text-black;
+}
+.job-flex{
+  @apply flex items-center gap-2;
+}
+
+.job-section{
+  @apply w-full;
+  ul {
+      li {
+          @apply pl-10 text-offwhite-400 text-base mb-4;
+          background: url("/images/star.svg") no-repeat;
+      }
+      p{
+        @apply text-base
+      }
+  }
+  h2{
+    @apply text-lg font-bold py-2;
+}
+
+  p{
+      @apply text-offwhite-400 text-lg;
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "next",
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@next/next/recommended",
+    "prettier"
+  ],
+  "globals": {
+    "JSX": true,
+    "React": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module" // "project": "./tsconfig.json"
+  },
+  "plugins": [
+    "prettier",
+    "@typescript-eslint",
+    "simple-import-sort",
+    "unused-imports",
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "@next/next/no-img-element": "warn",
+    "@typescript-eslint/ban-types": [
+      "warn",
+      {
+        "types": {
+          "{}": {
+            "fixWith": "object",
+            "message": "Use object instead"
+          }
+        }
+      }
+    ],
+    "@typescript-eslint/no-explicit-any": "warn", // ["warn", { "ignoreRestArgs": true } ], // commented during dev
+    "@typescript-eslint/no-unused-vars": "warn",
+    "@typescript-eslint/no-use-before-define": ["warn"],
+    "array-callback-return": 1,
+    "camelcase": "warn",
+    "consistent-return": 1,
+    "default-param-last": 1,
+    "eol-last": 1,
+    "guard-for-in": 1,
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "import/no-mutable-exports": 1,
+    "import/prefer-default-export": 1,
+    "jsx-a11y/anchor-has-content": 1,
+    "jsx-quotes": ["warn", "prefer-double"],
+    "max-len": [
+      "warn",
+      {
+        "code": 120,
+        "ignoreComments": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true
+      }
+    ],
+    "no-await-in-loop": 1,
+    "no-console": "off",
+    "no-nested-ternary": 0,
+    "no-param-reassign": 1,
+    "no-restricted-syntax": 1,
+    "no-return-assign": 1,
+    "no-return-await": 1,
+    "no-shadow": 1,
+    "no-tabs": [
+      "error",
+      {
+        "allowIndentationTabs": false
+      }
+    ],
+    "no-unused-expressions": 1,
+    "no-unused-vars": "warn",
+    "no-use-before-define": "warn",
+    "object-curly-spacing": ["warn", "always"],
+    "prettier/prettier": "off",
+    "quotes": [
+      "error",
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ],
+    "react/destructuring-assignment": "warn",
+    "react/jsx-boolean-value": "warn",
+    "react/jsx-curly-brace-presence": [
+      "warn",
+      {
+        "children": "never",
+        "props": "never"
+      }
+    ],
+    "react/jsx-no-useless-fragment": 1,
+    "react/no-array-index-key": "warn",
+    "react/no-unescaped-entities": "warn",
+    "react/no-unused-prop-types": 1,
+    "react/no-unused-state": 1,
+    "react/prefer-stateless-function": 1,
+    "react/require-default-props": 0,
+    "react/state-in-constructor": 1,
+    "react/prop-types": "warn",
+    "react-hooks/exhaustive-deps": "warn",
+    "simple-import-sort/exports": "warn",
+    "simple-import-sort/imports": [
+      "warn",
+      {
+        "groups": [
+          ["^@?\\w", "^\\u0000"],
+          ["^.+\\.s?css$"],
+          ["^@/layout", "^@/components", "^@/elements"],
+          [
+            "^@/actions",
+            "^@/lib",
+            "^@/Hooks",
+            "@/state",
+            "^@/service",
+            "^@/utils"
+          ],
+          ["^@/", "^@/types"],
+          [
+            "^\\./?$",
+            "^\\.(?!/?$)",
+            "^\\.\\./?$",
+            "^\\.\\.(?!/?$)",
+            "^\\.\\./\\.\\./?$",
+            "^\\.\\./\\.\\.(?!/?$)",
+            "^\\.\\./\\.\\./\\.\\./?$",
+            "^\\.\\./\\.\\./\\.\\.(?!/?$)"
+          ],
+          ["^"]
+        ]
+      }
+    ],
+    "unused-imports/no-unused-imports": "warn",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "args": "after-used",
+        "argsIgnorePattern": "^_",
+        "vars": "all",
+        "varsIgnorePattern": "^_"
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true
+      }
+    },
+    "react": {
+      "version": "detect"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "AdminList": [
+    {
+      "id": 1,
+      "title": "Edit",
+      "icon": "icon-edit"
+    },
+    {
+      "id": 2,
+      "title": "Delete",
+      "icon": "icon-delete"
+    },
+    {
+      "id": 3,
+      "title": "Archive",
+      "icon": "icon-archive"
+    }
+  ],
+  "MenuList": [
+    {
+      "id": 1,
+      "title": "Flag",
+      "icon": "icon-flag"
+    },
+    {
+      "id": 2,
+      "title": "Hide",
+      "icon": "icon-hide"
+    }
+  ]
+}

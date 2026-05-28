@@ -1,0 +1,83 @@
+.thread {
+    & > .card {
+        @apply relative;
+    }
+    &:before {
+        content: "";
+        @apply top-0 bottom-0 w-0.5 absolute left-1 ;
+    }
+    .child-thread {
+        @apply relative z-10 ml-4 mt-4 lg:ml-12;
+        &:before {
+            content: "";
+            @apply bg-primary transition duration-1000 absolute w-4 h-4 lg:w-5 lg:h-5 rounded-full top-5 -left-[18px] lg:-left-[48px] right-0 -bottom-24;
+        }
+        &:after {
+            content: "";
+            @apply -top-4 bottom-0 bg-black-300 w-0.5 absolute !-left-10 lg:left-2 -z-10;
+            @media (max-width:767px) {
+                left: -11px !important;
+            }
+        }
+        .card-top-section{
+            @apply mb-0 rounded-b-none border-b border-b-gray-400 p-3 rounded-t-lg;
+            &::after,
+            &::before,.card-icon {
+               @apply hidden
+            }
+        }
+        .post-card-footer{
+            @apply mb-0 rounded-t-none rounded-b-lg py-1 px-3;
+        }
+        
+            .second-child{
+                &::after {
+                     content: "";
+                    width: 2px;
+                    height: 100%;
+                    background: #707070;
+                    position: absolute;
+                    top: 40px;
+                    left: -40px;
+                     @media (max-width:767px) {
+                             top: 36px;
+                            left: -12px;
+                    }
+                }
+            }
+          .replies-comment:last-child{
+                .second-child{
+                     &::after {
+                        height: calc(100% - 40px)
+                     }
+                     .second-child{
+                        &::after {
+                            width: 0;
+                         }
+                     }
+                }
+          }   
+         
+    }
+    .second-child {
+        @apply relative;
+        &:before {
+            content: "";
+            @apply border-primary border-4 bg-white absolute w-3 h-3 lg:w-4 lg:h-4 rounded-full top-6 -left-4 lg:-left-[47px] right-0 -bottom-24 z-10;
+        }
+        .card-icon{display: none;}
+        .card-top-section::after, .card-top-section::before{display: none;}
+    }
+    .verticalLine {
+          @apply cursor-pointer transition-all duration-500 h-full w-0.5 absolute bottom-0 left-[5px] lg:left-2 bg-black-300;
+
+    }
+    .increase-zIndex {
+        z-index: 11;
+    }
+}
+.overlaySecChild {
+    .overlay-card {
+         @apply top-0;
+    }
+}

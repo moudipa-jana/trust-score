@@ -1,0 +1,36 @@
+.aboutVideo::-webkit-media-controls {
+  @apply hidden;
+}
+
+//need to change class
+
+.combined {
+  @apply text-white;
+  text-shadow: 2px 2px 0 rgb(224, 182, 16), -1px -1px 0 rgb(224, 182, 16),
+    1px -1px 0 rgb(224, 182, 16), -1px 1px 0 rgb(224, 182, 16),
+    1px 1px 0 rgb(224, 182, 16);
+}
+
+.borderText {
+  color: #FEF200;
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #FEF200;
+}
+
+.masked {
+  @apply block  h-full max-w-full mt-[10px];
+  mask-image: url("/images/video.svg");
+  mask-repeat: no-repeat, no-repeat;
+  max-width: 96%;
+  mask-size: 99% 90%, 92% 82%
+  
+}
+.video-poster{
+  width: 95%;
+    margin: 0 auto;
+    right: 7px;
+    height: auto;
+    top: 18px;
+    img{object-fit: contain;}
+}

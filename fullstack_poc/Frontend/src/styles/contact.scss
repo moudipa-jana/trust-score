@@ -1,0 +1,15 @@
+.contact-heding{
+  h2{
+    @apply  text-4xl lg:text-5xl
+  }
+}
+
+.contact-select{
+  @apply pb-6;
+  div{
+    @apply border-offwhite-100 rounded-sm ;
+    .dropdown-input{
+      @apply p-2.5 text-sm
+    }
+  }
+}

@@ -1,0 +1,40 @@
+.slick-slide{
+  @apply p-1
+}
+
+.scrollbarCampfire {
+  @apply max-h-[300px] w-full overflow-y-scroll rounded-lg border border-primary bg-white lg:p-4 p-2 shadow;
+}
+
+.desccampfire {
+  @apply h-[137px] mb-2 overflow-hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+}
+.membersJoined {
+  .slick-dots {
+    @apply -bottom-6;
+  }
+}
+
+.campfire-name{
+  @apply font-bold;
+}
+.css-t3ipsp-control{
+  box-shadow: none !important;
+}
+
+.campfire-dot{
+  @apply mx-2 h-1 w-1 lg:mr-0 rounded-full bg-black;
+}
+.not-campfire-member{
+ 
+}
+
+.dropdownMenu {
+  @apply hidden absolute w-full top-10 left-0 bg-white overflow-scroll border border-offwhite-100 z-1 drop-shadow-md rounded-b-md;
+  &.showList {
+    @apply block;
+  }
+}

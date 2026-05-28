@@ -1,0 +1,84 @@
+{
+  "AdminList": [
+    {
+      "id": 1,
+      "title": "Edit",
+      "icon": "icon-edit"
+    },
+    {
+      "id": 2,
+      "title": "Delete",
+      "icon": "icon-delete"
+    },
+    {
+      "id": 3,
+      "title": "Archive",
+      "icon": "icon-archive"
+    }
+  ],
+  "HiddenList": [
+    {
+      "id": 1,
+      "title": "UnHide Post",
+      "icon": "icon-archive"
+    }
+  ],
+  "MenuList": [
+    {
+      "id": 1,
+      "title": "Flag",
+      "icon": "icon-flag"
+    },
+    {
+      "id": 2,
+      "title": "Hide",
+      "icon": "icon-hide"
+    },
+    {
+      "id": 3,
+      "title": "Block the user",
+      "icon": "icon2-blocked"
+    }
+  ],
+  "AdminListUnarchive": [
+    {
+      "id": 2,
+      "title": "Delete",
+      "icon": "icon-delete"
+    },
+    {
+      "id": 3,
+      "title": "Unarchive",
+      "icon": "icon-archive"
+    }
+  ],
+  "CampfireAdmin": [
+    {
+      "id": 1,
+      "title": "Delete",
+      "icon": "icon-delete"
+    },
+    {
+      "id": 2,
+      "title": "Hide",
+      "icon": "icon-hide"
+    },
+    {
+      "id": 3,
+      "title": "Block the user",
+      "icon": "icon2-blocked"
+    }
+  ],
+  "UserMenuList": [
+    {
+      "id": 1,
+      "title": "Flag",
+      "icon": "icon-flag"
+    },
+    {
+      "id": 2,
+      "title": "Block this user",
+      "icon": "icon2-blocked"
+    }
+  ]
+}

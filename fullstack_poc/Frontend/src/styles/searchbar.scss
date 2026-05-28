@@ -1,0 +1,47 @@
+.campfire-dot-search {
+  @apply h-1.5 w-1.5 rounded-full bg-gray-700 text-center;
+}
+
+.campfire-ser {
+  h2 {
+    @apply font-normal;
+  }
+}
+
+.search-list {
+  @apply flex cursor-pointer items-center gap-3 py-2 flex-wrap lg:border-none rounded-md px-1 mb-2.5 lg:mb-0;
+}
+
+.search-list-hover {
+  @apply transition hover:scale-105 ease-in-out duration-1000 hover:translate-x-2;
+}
+
+.search-post {
+  @apply flex items-center gap-2 py-2 lg:border-none mb-2.5 lg:mb-0 cursor-pointer px-1;
+}
+
+.main-searchbar {
+  @apply pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3;
+}
+
+.searchbar-ul {
+  @apply absolute lg:max-h-[600px] lg:overflow-auto top-10 z-150 w-full bg-white xl:top-16 lg:top-13;
+}
+
+.writing-vertical {
+  @apply text-4xl font-bold text-offwhite-100 rotate-180;
+  writing-mode: tb-rl;
+}
+
+.search-bg {
+  input {
+    position: inherit;
+    @apply z-10;
+  }
+
+  @apply z-10;
+
+  &::after {
+    @apply content-[''] fixed top-0 right-0 bottom-0 left-0 w-full bg-white-950;
+  }
+}

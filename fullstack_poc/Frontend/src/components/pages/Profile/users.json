@@ -1,0 +1,60 @@
+{
+  "user1": [
+    {
+      "id": 1,
+      "name": "Maude Hall",
+      "designation": "Nutritionist",
+      "btn": "Remove"
+    },
+    {
+      "id": 2,
+      "name": "Maude Hall",
+      "designation": "Nutritionist",
+      "btn": "Remove"
+    },
+    {
+      "id": 3,
+      "name": "Maude Hall",
+      "designation": "Nutritionist",
+      "btn": "Remove"
+    }
+  ],
+  "user2": [
+    {
+      "id": 1,
+      "name": "Maude Hall",
+      "designation": "Nutritionist",
+      "btn": "Following"
+    },
+    {
+      "id": 2,
+      "name": "Maude Hall",
+      "designation": "Nutritionist",
+      "btn": "Following"
+    },
+    {
+      "id": 3,
+      "name": "Maude Hall",
+      "designation": "Nutritionist",
+      "btn": "Following"
+    },
+    {
+      "id": 4,
+      "name": "Maude Hall",
+      "designation": "Nutritionist",
+      "btn": "Following"
+    },
+    {
+      "id": 5,
+      "name": "Maude Hall",
+      "designation": "Nutritionist",
+      "btn": "Following"
+    },
+    {
+      "id": 6,
+      "name": "Maude Hall",
+      "designation": "Nutritionist",
+      "btn": "Following"
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+
+.stickySection {
+  @apply sticky top-[20%] left-0 right-0 w-screen;
+  .stickyGhost {
+    @apply w-screen;
+  }
+}
+
+.stickyViewPort {
+  @apply h-screen;
+}
+
+
+.scroll-container {
+  position: sticky;
+  top:40px;
+  left: 0;
+  right: 0;
+  will-change: transform;
+
+  .ghost {
+    width: 100vw;
+  }
+}
+
+.thumbnails-container {
+  position: relative;
+  height: 100vh;
+  width: max-content;
+  display: flex;
+  border: 40px ;
+
+  .thumbnails {
+    position: relative;
+    display: flex;
+    border: 20px ; 
+
+   
+
+    .thumbnail {
+      height: 40vh;
+      width: 700px;
+      border: 15px;
+    }
+  }
+}
+
+  
+
+.sec3persions1 path {
+  animation: stroke_fill 7s linear forwards;
+  stroke-dasharray: 300.774;
+  stroke-dashoffset: 300.774;
+  stroke: #22b0e6;
+  stroke-width: 1;
+  fill: white !important;
+  
+}
+.sleepPersion {
+  animation: stroke_fill 4s linear forwards;
+  stroke-dasharray: 324.774;
+  stroke-dashoffset: 324.774;
+  stroke: #22b0e6;
+  stroke-width: 1.5;
+  
+}
+
+.leftPerson path{
+  animation: stroke_fill 5s linear forwards;
+  stroke-dasharray: 324.774;
+  stroke-dashoffset: 324.774;
+  stroke: #22b0e6;
+  stroke-width: 1.5;
+}
+.rightPerson path{
+  animation: stroke_fill 5s linear forwards;
+  stroke-dasharray: 324.774;
+  stroke-dashoffset: 324.774;
+  stroke: #22b0e6;
+  stroke-width: 1.5;
+}
+
+@keyframes stroke_fill {
+  0% {
+    fill: white;
+  }
+  50% {
+    fill: white;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    fill: #22b0e6;
+    stroke-dashoffset: 0;
+  }
+}
+

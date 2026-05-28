@@ -1,0 +1,51 @@
+.line {
+  @apply bg-gray-200 h-px w-full mb-2;
+  &.light {
+    @apply bg-gray-300;
+  }
+   &.transparent {
+    @apply bg-white h-0.5;
+  }
+}
+
+.arrow-bottom:after {
+  content: " ";
+  @apply absolute  h-2 w-2 bg-primary -rotate-45 transform origin-top-left -bottom-1.5 left-1;
+}
+.postsContainer {
+  .valueHolder {
+    @apply min-w-[50px] lg:min-w-[90px];
+  }
+  .unvalueHolder {
+    @apply min-w-[50px] lg:min-w-[100px];
+  }
+}
+.followersCount {
+  white-space: nowrap;
+}
+@media (max-width: 1024px) {
+  .followersCount {
+    .text-sm {
+      font-size: 12px;
+    }
+  }
+}
+@media (max-width: 767px) {
+  .followersCount {
+    .text-sm {
+      font-size: 8px;
+    }
+  }
+}
+
+.shareIconBtn {
+ @apply absolute top-0 -right-14 mr-2 hidden rounded border border-gray-500  bg-white px-1 py-0.5 text-[10px] font-medium text-gray-700 group-hover:block dark:bg-gray-700 dark:text-gray-400;
+}
+
+.word-wrap{
+  @apply break-all
+}
+
+.card .card .userPhoto {
+  @apply h-10 w-10;
+}

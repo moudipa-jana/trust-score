@@ -1,0 +1,21 @@
+.breadcrumb{
+  @apply flex flex-wrap items-center  bg-white;
+}
+.crumbList{
+  @apply inline-flex items-center cursor-pointer;
+  
+}
+
+#singleBlogBody{
+  .crumbList{
+    &:last-child{
+      @apply hidden lg:inline-block;
+    }
+    &:nth-last-child(2){
+      svg{
+        @apply hidden lg:inline-block;
+      }
+    }
+
+  }
+}

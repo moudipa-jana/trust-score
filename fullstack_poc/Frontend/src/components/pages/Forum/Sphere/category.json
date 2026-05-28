@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "slug": "mentalHealth",
+    "name": "Mental Health",
+    "gradientColor": "mental",
+    "image": "/images/forum/sphere/Mental Health.svg"
+  },
+  {
+    "id": 2,
+    "slug": "fitness",
+    "name": "Fitness",
+    "gradientColor": "fitness",
+    "image": "/images/forum/sphere/fitness.svg"
+  },
+  {
+    "id": 3,
+    "slug": "lifestyle",
+    "name": "Lifestyle Diseases",
+    "gradientColor": "lifestyle",
+    "image": "/images/forum/sphere/lifestyle.svg"
+  },
+  {
+    "id": 4,
+    "slug": "sheReads",
+    "name": "She Reads",
+    "gradientColor": "sheReads",
+    "image": "/images/forum/sphere/sheReads.svg"
+  },
+  {
+    "id": 5,
+    "slug": "wellness",
+    "name": "Wellness Corner",
+    "gradientColor": "wellness",
+    "image": "/images/forum/sphere/wellness.svg"
+  },
+  {
+    "id": 6,
+    "slug": "parenting",
+    "name": "Parenting",
+    "gradientColor": "parenting",
+    "image": "/images/forum/sphere/parenting.svg"
+  },
+  {
+    "id": 8,
+    "slug": "hush",
+    "name": "Hush Talks",
+    "gradientColor": "hush",
+    "image": "/images/forum/sphere/hush.svg"
+  },
+  {
+    "id": 7,
+    "slug": "contagion",
+    "name": "Contagion",
+    "gradientColor": "contagion",
+    "image": "/images/forum/sphere/contagion.svg"
+  }
+]

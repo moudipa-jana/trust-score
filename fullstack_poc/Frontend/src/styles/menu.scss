@@ -1,0 +1,98 @@
+nav {
+  @apply relative;
+
+  &::after {
+    content: '';
+    @apply clear-both block;
+  }
+}
+
+.header {
+  aside {
+    &.active {
+      @apply top-12 lg:top-18 xl:top-20;
+    }
+  }
+}
+
+aside {
+  @apply fixed top-0 left-0 right-0 -z-10 box-border flex h-0 flex-col items-center overflow-hidden bg-white opacity-0 shadow-md shadow-md transition-all transition-all duration-150 duration-500 ease-in-out ease-in-out;
+
+  &.active {
+    @apply fixed top-[86px] z-50 h-auto overflow-visible opacity-100;
+  }
+
+  .menu-link {
+    @apply flex flex-col gap-6 py-12 font-headingBold text-4xl font-[800]  text-primary;
+    a {
+      @apply relative font-extrabold;
+
+      &:after {
+        content: '';
+        z-index: -1;
+        transition: all 0.5s;
+        @apply absolute left-[5%] -bottom-3 h-8 w-[90%] bg-yellow opacity-0;
+      }
+
+      &:hover {
+        &:after {
+          @apply opacity-100;
+        }
+      }
+    }
+  }
+}
+
+.toggle-wrap {
+  @apply relative float-left -ml-2.5 cursor-pointer touch-none select-none py-2 lg:py-4;
+}
+
+.toggle-bar,
+.toggle-bar::before,
+.toggle-bar::after,
+.toggle-wrap.active .toggle-bar,
+.toggle-wrap.active .toggle-bar::before,
+.toggle-wrap.active .toggle-bar::after {
+  @apply transition-all duration-200 ease-in-out;
+}
+
+.toggle-bar {
+  @apply relative block w-6 rounded border-t-2 border-t-sky-400 lg:w-12;
+}
+
+.toggle-bar::before,
+.toggle-bar::after {
+  content: '';
+  @apply absolute block h-0.5 w-6 origin-[13%] rotate-0 rounded bg-sky-400 lg:w-12;
+}
+
+.toggle-bar::before {
+  @apply -top-2 lg:-top-4;
+}
+
+.toggle-bar::after {
+  @apply top-1 lg:top-3;
+}
+
+.toggle-wrap.active .toggle-bar {
+  @apply border-t-[6px] border-transparent;
+}
+
+.toggle-wrap.active .toggle-bar::before {
+  @apply rotate-45;
+  -ms-transform: rotate(44deg);
+  -webkit-transform: rotate(44deg);
+  transform: rotate(44deg);
+  @apply w-5.5 lg:w-13;
+}
+
+.toggle-wrap.active .toggle-bar::after {
+  -ms-transform: rotate(-44deg);
+  -webkit-transform: rotate(-44deg);
+  transform: rotate(-44deg);
+  @apply w-5.5 lg:w-13;
+}
+
+.bottomMenuHolder {
+  @apply flex flex-wrap items-center justify-center gap-8 font-medium text-black-200 lg:flex-nowrap lg:gap-4 xl:gap-8;
+}

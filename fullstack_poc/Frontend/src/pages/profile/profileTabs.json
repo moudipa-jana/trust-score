@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "My Activities",
+    "numberOf": "50"
+  },
+  {
+    "id": 2,
+    "name": "Archive",
+    "numberOf": "5"
+  },
+  {
+    "id": 3,
+    "name": "Bookmark",
+    "numberOf": "4"
+  },
+  {
+    "id": 4,
+    "name": "Hidden",
+    "numberOf": "5"
+  }
+]

@@ -1,0 +1,7 @@
+.upload-btn{
+  @apply flex w-32 lg:w-36 cursor-pointer flex-col items-center rounded-md border border-primary bg-white p-2  tracking-wide text-gray-700 shadow-lg
+}
+
+.apply-upload-btn{
+  @apply flex xl:w-[558px] cursor-pointer flex-col items-center rounded-sm border border-primary bg-white p-2  tracking-wide text-gray-700 shadow-lg
+} 

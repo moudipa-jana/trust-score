@@ -1,0 +1,117 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?zdzsc');
+  src:  url('fonts/icomoon.eot?zdzsc#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?zdzsc') format('truetype'),
+    url('fonts/icomoon.woff?zdzsc') format('woff'),
+    url('fonts/icomoon.svg?zdzsc#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'icomoon2';
+  src:  url('fonts/fonts/icomoon.eot?zdzsc');
+  src:  url('fonts/fonts/icomoon.eot?zdzsc#iefix') format('embedded-opentype'),
+    url('fonts/fonts/icomoon.ttf?zdzsc') format('truetype'),
+    url('fonts/fonts/icomoon.woff?zdzsc') format('woff'),
+    url('fonts/fonts/icomoon.svg?zdzsc#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon2-"], [class*=" icon2-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon2' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-fillDown:before {
+  content: "\e90c";
+  color: #f00;
+}
+.icon-fillBookmark:before {
+  content: "\e90d";
+  color: #00b2ed;
+}
+.icon-fillUp:before {
+  content: "\e90e";
+  color: #00b2ed;
+}
+.icon-up:before {
+  content: "\e90f";
+  color: #00b2ed;
+}
+.icon-down:before {
+  content: "\e910";
+  color: #f00;
+}
+.icon-flag:before {
+  content: "\e900";
+}
+.icon-share:before {
+  content: "\e901";
+  color: #718096;
+}
+.icon-close:before {
+  content: "\e902";
+  color: #f44336;
+}
+.icon-check:before {
+  content: "\e903";
+  color: #4caf50;
+}
+.icon-download:before {
+  content: "\e904";
+}
+.icon-eye:before {
+  content: "\e905";
+}
+.icon-edit:before {
+  content: "\e906";
+}
+.icon-addUser:before {
+  content: "\e907";
+  color: #718096;
+}
+.icon-bookmark:before {
+  content: "\e908";
+}
+.icon-archive:before {
+  content: "\e909";
+}
+.icon-hide:before {
+  content: "\e90a";
+}
+.icon-delete:before {
+  content: "\e90b";
+  // color: #718096;
+}
+.icon2-blocked:before {
+  content: "\e900";
+}

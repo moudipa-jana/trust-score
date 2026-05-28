@@ -1,0 +1,96 @@
+.prose h1,
+.prose h2,
+.prose p,
+.prose ul,
+.prose li,
+.prose div {
+  @apply text-black-200 dark:text-gray;
+}
+
+.prose li,
+.prose p {
+  @apply dark:text-black-200;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6,
+.prose strong,
+.prose b {
+  @apply font-semibold;
+}
+
+.prose p {
+  @apply leading-7;
+}
+
+body #cc_div #cm {
+  @apply rounded-none;
+}
+
+.prose a {
+  @apply text-primary dark:text-primary;
+}
+
+// .prose li {
+//   @apply p-2.5;
+// }
+
+.termsProse p {
+  @apply text-lg font-normal;
+}
+
+
+
+.markdown {
+  h1 {
+    @apply text-2xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-xl lg:text-4xl;
+  }
+
+  h3 {
+    @apply text-lg lg:text-3xl;
+  }
+
+  h4 {
+    @apply text-base lg:text-2xl;
+  }
+  
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply mb-4 mt-6 font-semibold;
+
+    &:first-child {
+      @apply mt-0;
+    }
+  }
+
+  p {
+    @apply mb-4;
+
+    &:last-child {
+      @apply mb-0;
+    }
+  }
+
+  ul,
+  ol {
+    @apply mb-4 ml-6;
+    list-style-type: inherit;
+  }
+
+  li {
+    @apply mb-2;
+  }
+}

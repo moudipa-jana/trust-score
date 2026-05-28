@@ -1,0 +1,81 @@
+name: Jenkins Build
+
+on:
+  push:
+    branches:
+      - kofuku-dev
+jobs:
+  trigger-jenkins:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up Bash environment
+        run: sudo apt-get update && sudo apt-get install -y jq curl
+
+      - name: Trigger Jenkins pipeline
+        env:
+          JENKINS_URL: https://${{ secrets.JENKINS_DEV_NEW_SERVER }}
+          JOB_NAME: ${{ secrets.JENKINS_DEV_NEW_JOBNAME }}
+          USER: ${{ secrets.JENKINS_DEV_NEW_USERNAME }}
+          TOKEN: ${{ secrets.JENKINS_DEV_NEW_API_TOKEN }}
+        run: |
+          set -e
+
+          echo "🔍 Fetching last build number..."
+          response=$(curl -s -u "$USER:$TOKEN" "$JENKINS_URL/job/$JOB_NAME/lastBuild/api/json")
+
+          if echo "$response" | grep -q "<html"; then
+              echo "⚠️ No previous builds found. Setting lastBuild_no=0"
+              lastBuild_no=0
+          else
+              lastBuild_no=$(echo "$response" | jq -r '.number')
+          fi
+          echo "Last Build Number: $lastBuild_no"
+
+          echo "🚀 Triggering new build..."
+          curl -X POST -u "$USER:$TOKEN" "$JENKINS_URL/job/$JOB_NAME/build"
+
+          echo "⏳ Waiting for Jenkins to start the new build..."
+          newBuild_no=$lastBuild_no
+          for i in {1..30}; do
+              latest=$(curl -s -u "$USER:$TOKEN" "$JENKINS_URL/job/$JOB_NAME/lastBuild/api/json" | jq -r '.number' 2>/dev/null || echo 0)
+              if [ "$latest" -gt "$lastBuild_no" ]; then
+                  newBuild_no=$latest
+                  break
+              fi
+              echo "Still waiting... ($i)"
+              sleep 5
+          done
+
+          echo "🆕 New Build Number: $newBuild_no"
+
+          check_pipeline_status() {
+              local build_no=$1
+              local status=$(curl -s -u "$USER:$TOKEN" "$JENKINS_URL/job/$JOB_NAME/$build_no/api/json" | jq -r '.building')
+              echo "$status"
+          }
+
+          echo "📡 Monitoring Jenkins build progress..."
+          while true; do
+              pipeline_status=$(check_pipeline_status "$newBuild_no")
+              if [ "$pipeline_status" == "false" ]; then
+                  break
+              fi
+              echo "Build is running..."
+              sleep 10
+          done
+
+          echo "✅ Fetching build result..."
+          build_status=$(curl -s -u "$USER:$TOKEN" "$JENKINS_URL/job/$JOB_NAME/$newBuild_no/api/json" | jq -r '.result')
+          echo "Build Status: $build_status"
+
+          if [ "$build_status" == "FAILURE" ]; then
+              echo "❌ Build failed"
+              exit 1
+          elif [ "$build_status" == "SUCCESS" ]; then
+              echo "✅ Build succeeded"
+          else
+              echo "⚠️ Build finished with status: $build_status"
+
+          fi
+        

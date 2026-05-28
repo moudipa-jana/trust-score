@@ -1,0 +1,33 @@
+.slick-next {
+  @apply right-2.5 p-2.5;
+}
+
+.slick-prev {
+  @apply left-2.5;
+}
+
+.slick-next,
+.slick-prev {
+  &::before {
+    @apply bg-gray-700;
+  }
+}
+body {
+  .slick-prev.slick-disabled ,.slick-prev.slick-disable,.slick-next.slick-disabled{
+  @apply hover:bg-gray-200 hover:text-base opacity-80 cursor-not-allowed	;
+
+}
+}
+body {
+  .slick-prev,
+  .slick-next {
+    @apply flex h-6 w-6 items-center justify-center bg-gray-200 text-base text-white hover:bg-primary hover:text-white;
+  }
+  .slick-prev {
+    @apply -left-[17px];
+  }
+  .slick-next {
+    @apply -right-[20px];
+  }
+
+}

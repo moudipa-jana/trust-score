@@ -1,0 +1,17 @@
+.image-container {
+  @apply w-full;
+  height: inherit !important;
+}
+
+.image-container > div {
+}
+
+.image-container .image {
+  @apply   relative  w-[100%];
+  height: inherit !important;
+  position: unset !important;
+
+}
+.maskWhite{
+  @apply bg-white relative;
+}

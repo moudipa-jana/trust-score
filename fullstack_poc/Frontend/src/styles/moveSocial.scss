@@ -1,0 +1,36 @@
+
+
+@keyframes moveSocialMoving {
+  from {
+    opacity: 0;
+    right: 20%;
+  }
+  to {
+    opacity: 1;
+    right: 10% !important;
+    
+  }
+}
+@keyframes hideSocilaIcon {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    
+  }
+}
+
+.hideMovingIcon{
+  -webkit-animation: hideSocilaIcon 3s linear forwards;
+}
+
+.logoAnimation {
+  @apply absolute bottom-10 right-10;
+  bottom: -40% !important;
+  -webkit-animation: moveSocialMoving 3s linear forwards;
+}
+
+.hideIcon{
+  -webkit-animation: hideSocilaIcon 1s linear forwards;
+}

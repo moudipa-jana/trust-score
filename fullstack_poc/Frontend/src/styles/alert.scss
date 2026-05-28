@@ -1,0 +1,8 @@
+.arrow-top:after {
+  content: " ";
+  @apply absolute  h-5 w-5 bg-[#F8F8F8] -rotate-45 transform origin-top-left top-[5px] right-[255px] lg:right-[45px];
+}
+
+.alertBox{
+  @apply absolute left-2 top-16 right-10  lg:-left-[285px] lg:top-[95px] lg:w-[184%]
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "read": false,
+    "type": "request",
+    "details": {
+      "title": "Dennis Nedry replied to Isla Nublar SOC2 compliance report    ",
+      "timeStamp": "Yesterday at 5:42 PM",
+      "image": "/images/userImage.svg"
+    }
+  },
+  {
+    "id": 2,
+    "read": false,
+    "type": "default",
+    "details": {
+      "title": "Ray Arnold left 6 comments on Isla Nublar SOC2 compliance report",
+      "timeStamp": "Today at 9:42 AM",
+      "image": "/images/userImage.svg"
+    }
+  },
+
+  {
+    "id": 3,
+    "read": true,
+    "type": "reply",
+    "details": {
+      "title": "Dennis Nedry replied to Isla Nublar SOC2 compliance report    ",
+      "timeStamp": "Yesterday at 5:42 PM",
+      "image": "/images/userImage.svg",
+      "replyText": "”Oh, I finished de-bugging the phones, but the system's compiling for eighteen minutes, or twenty. So, some minor systems may go on and off for a while.”"
+    }
+  },
+  {
+    "id": 4,
+    "read": true,
+    "type": "default",
+    "details": {
+      "title": "John Hammond created Isla Nublar SOC2 compliance report",
+      "timeStamp": "Yesterday at 11:42 PM",
+      "image": "/images/userImage.svg"
+    }
+  }
+]
