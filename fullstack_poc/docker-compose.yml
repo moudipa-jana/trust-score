@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgrespassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  graphql-engine:
+    image: hasura/graphql-engine:v2.36.0.cli-migrations-v3
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    restart: always
+    environment:
+      HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:postgrespassword@postgres:5432/postgres
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
+      HASURA_GRAPHQL_DEV_MODE: "true"
+      HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
+    volumes:
+      - ./hasura/migrations:/hasura-migrations
+    command:
+      - graphql-engine
+      - serve
+
+  trust-service:
+    build: ./trust_service
+    ports:
+      - "8000:8000"
+    environment:
+      HASURA_URL: http://graphql-engine:8080/v1/graphql
+      HASURA_ADMIN_SECRET: myadminsecretkey
+    depends_on:
+      - graphql-engine
+
+volumes:
+  db_data:
